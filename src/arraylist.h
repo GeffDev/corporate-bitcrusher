@@ -1,7 +1,7 @@
 #ifndef ARRAYLIST_H
 #define ARRAYLIST_H
 
-#include "Utility.h"
+#include "utility.h"
 
 #define VECTOR_INIT_CAPACITY 4
 

@@ -1,7 +1,7 @@
 #ifndef INIT_H
 #define INIT_H
 
-#include "Utility.h"
+#include "utility.h"
 
 #include "arraylist.h"
 
@@ -19,9 +19,9 @@ typedef struct {
 } Plugin;
 
 typedef enum {
-    BitDepth,
-    Wet,
-    Dry,
+    PARAMS_BITDEPTH,
+    PARAMS_WET,
+    PARAMS_DRY,
 } Params;
 
 #endif

@@ -64,13 +64,13 @@ static void pluginProcessEvent(Plugin *plugin, const clap_event_header_t *event)
             clap_event_param_value_t *param_event = event;
 
             switch (param_event->param_id) {
-            case BitDepth:
+            case PARAMS_BITDEPTH:
                 plugin->bits = param_event->value;
                 break;
-            case Wet:
+            case PARAMS_WET:
                 plugin->wet = param_event->value;
                 break;
-            case Dry:
+            case PARAMS_DRY:
                 plugin->dry = param_event->value;
                 break;
             }
@@ -87,8 +87,8 @@ u32 getParamCount(const clap_plugin_t *plugin_handle) {
 
 bool getParamInfo(const clap_plugin_t *plugin_handle, u32 param_index, clap_param_info_t *param_info) {
     switch (param_index) {
-    case BitDepth:
-        param_info->id = BitDepth;
+    case PARAMS_BITDEPTH:
+        param_info->id = PARAMS_BITDEPTH;
         strncpy(param_info->name, "Bits", CLAP_NAME_SIZE);
         param_info->module[0] = 0;
         param_info->default_value = 16.0;
@@ -97,8 +97,8 @@ bool getParamInfo(const clap_plugin_t *plugin_handle, u32 param_index, clap_para
         param_info->flags = CLAP_PARAM_IS_AUTOMATABLE;
         param_info->cookie = NULL;
         break;
-    case Wet:
-        param_info->id = Wet;
+    case PARAMS_WET:
+        param_info->id = PARAMS_WET;
         strncpy(param_info->name, "Wet", CLAP_NAME_SIZE);
         param_info->module[0] = 0;
         param_info->default_value = 0.8;
@@ -107,8 +107,8 @@ bool getParamInfo(const clap_plugin_t *plugin_handle, u32 param_index, clap_para
         param_info->flags = CLAP_PARAM_IS_AUTOMATABLE;
         param_info->cookie = NULL;
         break;
-    case Dry:
-        param_info->id = Dry;
+    case PARAMS_DRY:
+        param_info->id = PARAMS_DRY;
         strncpy(param_info->name, "Dry", CLAP_NAME_SIZE);
         param_info->module[0] = 0;
         param_info->default_value = 0.3;
@@ -130,13 +130,13 @@ bool getParamValue(const clap_plugin_t *plugin_handle, clap_id param_id, double 
     Plugin *plugin = (Plugin *)plugin_handle->plugin_data;
 
     switch (param_id) {
-    case BitDepth:
+    case PARAMS_BITDEPTH:
         *value = plugin->bits;
         return true;
-    case Wet:
+    case PARAMS_WET:
         *value = plugin->wet;
         return true;
-    case Dry:
+    case PARAMS_DRY:
         *value = plugin->dry;
         return true;
     }
@@ -148,13 +148,13 @@ bool paramValueToText(const clap_plugin_t *plugin_handle, clap_id param_id, doub
     Plugin *plugin = (Plugin *)plugin_handle->plugin_data;
 
     switch (param_id) {
-    case BitDepth:
+    case PARAMS_BITDEPTH:
         snprintf(display, size, "%f bit", value);
         return true;
-    case Wet:
+    case PARAMS_WET:
         snprintf(display, size, "%f", value);
         return true;
-    case Dry:
+    case PARAMS_DRY:
         snprintf(display, size, "%f", value);
         return true;
     }
